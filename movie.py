@@ -38,6 +38,26 @@ def insertMovie():
         print(e)
 
 
+def allMovies():
+    try:
+        conn = sqlite3.connect("MOVIES.db")
+        c = conn.cursor()
+        c.execute("SELECT * FROM MOVIES")
+        allMovies = c.fetchall()
+        for movie in allMovies:
+            print("------------------------------")
+            print("Movie name:"+movie[0])
+            print("Lead Actor:"+movie[1])
+            print("Lead Actress:"+movie[2])
+            print("Director: " + movie[3])
+            print("Movie year:"+str(movie[4]))
+            print("------------------------------")
+        conn.commit()
+        conn.close()
+    except sqlite3.Error as e:
+        print(e)
+
+
 def selectMovie(movieName):
     try:
         conn = sqlite3.connect("MOVIES.db")
@@ -112,22 +132,25 @@ def directorDetails(directorName):
 while True:
     print("~~Movie Database~~")
     print("1. Insert a new movie")
-    print("2. Select a movie")
-    print("3. Display all the movies an actor/actress has starred in: ")
-    print("4. Display all the movies directed ")
-    print("5. Exit")
+    print("2. Display all Movies")
+    print("3. Select a movie")
+    print("4. Display all the movies an actor/actress has starred in: ")
+    print("5. Display all the movies directed ")
+    print("6. Exit")
     op = int(input("Enter your choice: "))
 
     if op == 1:
         insertMovie()
     elif op == 2:
+        allMovies()
+    elif op == 3:
         movieName = input("Enter the movie name: ")
         selectMovie(movieName)
-    elif op == 3:
+    elif op == 4:
         actorName = input("Enter the actor Name: ")
         actorDetails(actorName)
-    elif op == 4:
+    elif op == 5:
         directorName = input("Enter the Director Name:")
         directorDetails(directorName)
-    elif op == 5:
+    elif op == 6:
         break
