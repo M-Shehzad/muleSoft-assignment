@@ -8,4 +8,4 @@ Run the application by typing the following in the terminal
 $ py movie.py
 ```
 
-_Another Project with a similar theme and additional technologies like Flask and BeautifulSoup [HERE](https://github.com/M-Shehzad/actorHunt)_
+_Past project with a similar theme and additional technologies like Flask and BeautifulSoup [HERE](https://github.com/M-Shehzad/actorHunt)_
